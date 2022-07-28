@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import * as mongoose from 'mongoose'
 import { DynamicModule, Global, Inject, Module, OnApplicationShutdown, Provider } from '@nestjs/common'
 import {
   TypegooseConnectionOptions,
@@ -59,7 +59,7 @@ export class TypegooseCoreModule implements OnApplicationShutdown {
       provide: connectionName,
       useFactory: (typegooseModuleOptions: TypegooseModuleOptions) => {
         const { uri, ...typegooseOptions } = typegooseModuleOptions
-        return mongoose.createConnection(uri, typegooseOptions)
+        return mongoose.createConnection(<string>uri, typegooseOptions)
       },
       inject: [TYPEGOOSE_MODULE_OPTIONS] // inject output of async config creator
     }
@@ -86,7 +86,7 @@ export class TypegooseCoreModule implements OnApplicationShutdown {
       {
         provide: options.useClass,
         useClass: options.useClass
-      }
+      } as Provider
     ]
   }
 
@@ -109,7 +109,7 @@ export class TypegooseCoreModule implements OnApplicationShutdown {
       useFactory: async (optionsFactory: TypegooseOptionsFactory) =>
         await optionsFactory.createTypegooseOptions(),
       inject: [options.useExisting || options.useClass]
-    }
+    } as Provider
   }
 
   /**

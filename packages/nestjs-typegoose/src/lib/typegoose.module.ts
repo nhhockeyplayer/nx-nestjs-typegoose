@@ -39,7 +39,7 @@ export class TypegooseModule {
     connectionName?: string
   ): DynamicModule {
     const convertedModels = models.map((model) => convertToTypegooseClassWithOptions(model))
-    const providers = createTypegooseProviders(connectionName, convertedModels)
+    const providers = createTypegooseProviders(connectionName as string, convertedModels)
     return {
       module: TypegooseModule,
       providers,

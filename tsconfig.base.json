@@ -24,7 +24,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-nestjs-typegoose/nestjs-typegoose": [
+      "@nestjs-typegoose/nestjs-typegoose": [
         "packages/nestjs-typegoose/src/index.ts"
       ]
     }

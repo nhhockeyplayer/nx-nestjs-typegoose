@@ -1,5 +1,5 @@
 import { TypegooseCoreModule } from './typegoose-core.module'
-import mongoose from 'mongoose'
+import * as mongoose from 'mongoose'
 import {
   DEFAULT_DB_CONNECTION_NAME,
   TYPEGOOSE_CONNECTION_NAME,

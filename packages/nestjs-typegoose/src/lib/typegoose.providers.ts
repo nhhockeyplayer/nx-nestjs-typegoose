@@ -1,5 +1,5 @@
 import { FactoryProvider } from '@nestjs/common/interfaces'
-import { getDiscriminatorModelForClass, getModelForClass } from '@typegoose/typegoose'
+import { getDiscriminatorModelForClass, getModelForClass } from '@typegoose/typegoose/public-api'
 import { isClass } from 'is-class'
 import { Connection } from 'mongoose'
 import {
@@ -43,6 +43,7 @@ export function createTypegooseProviders(
       )
     }
 
+  // @ts-ignore
   return models.reduce((providers, { typegooseClass, schemaOptions = {}, discriminators = [] }) => {
     const modelFactory = (connection: Connection) =>
       getModelForClass(typegooseClass, { existingConnection: connection, schemaOptions })
@@ -65,7 +66,7 @@ type TypegooseInput = TypegooseClass | ClassOrDiscriminator
  * @internal
  */
 export function convertToTypegooseClassWithOptions(item: TypegooseInput): TypegooseClassWithOptions {
-  const tcwo: TypegooseClassWithOptions = convertToOptions(item)
+  const tcwo: TypegooseClassWithOptions = convertToOptions(item) as TypegooseClassWithOptions
   if (tcwo) {
     if (tcwo.discriminators) {
       tcwo.discriminators = tcwo.discriminators.map(
@@ -84,14 +85,14 @@ export function convertToTypegooseClassWithOptions(item: TypegooseInput): Typego
  * @param item the value to check whether or not it is a class
  * @internal
  */
-const isTypegooseClass = (item): item is TypegooseClass => isClass(item)
+const isTypegooseClass = (item: TypegooseInput): item is TypegooseClass => isClass(item)
 
 /**
  * Returns whether or not a value is a typegoose class with options.
  * @param item the value to check whether or not it is a typegoose class with options
  * @internal
  */
-const isTypegooseClassWithOptions = (item): item is TypegooseClassWithOptions =>
+const isTypegooseClassWithOptions = (item: ClassOrDiscriminator): item is TypegooseClassWithOptions =>
   isTypegooseClass(item.typegooseClass)
 
 /**
@@ -105,6 +106,8 @@ function convertToOptions(item: TypegooseInput): ClassOrDiscriminator | undefine
     return { typegooseClass: item }
   } else if (isTypegooseClassWithOptions(item)) {
     return item
+  } else {
+    return undefined
   }
 }
 
