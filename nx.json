@@ -18,5 +18,20 @@
         "accessToken": "NjBmZmU1YWUtNTU0Yi00NWE2LTk2MDMtNWY5NWFkN2ZhZmFifHJlYWQtd3JpdGU="
       }
     }
+  },
+  "generators": {
+    "@nrwl/angular:application": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "none"
+    },
+    "@nrwl/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "css"
+    }
   }
 }

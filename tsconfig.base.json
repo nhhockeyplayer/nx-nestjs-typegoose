@@ -3,18 +3,41 @@
   "compilerOptions": {
     "rootDir": ".",
     "sourceMap": true,
-    "declaration": false,
+    "target": "es6",
+    "lib": ["esnext"],
+    "removeComments": false,
+    "module": "commonjs",
     "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
+    "newLine": "LF",
+    "declaration": true,
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowJs": false,
+    "outDir": "build",
+    "inlineSourceMap": true,
     "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "suppressImplicitAnyIndexErrors": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-nestjs-typegoose/nestjs-typegoose": [
+        "packages/nestjs-typegoose/src/index.ts"
+      ]
+    }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["node_modules", "tmp"],
+  "angularCompilerOptions": {
+    "strictTemplates": false,
+    "strictInjectionParameters": false,
+    "strictOutputEventTypes": false,
+    "strictInputAccessModifiers": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "noImplicitReturns": false,
+    "experimentalModules": true
+  }
 }
