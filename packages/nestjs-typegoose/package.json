@@ -2,8 +2,8 @@
   "name": "@nx-nestjs-typegoose/nestjs-typegoose",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^14.0.0",
-    "@angular/core": "^14.0.0"
+    "mongoose": "~6.2.3",
+    "is-class": "^0.0.9"
   },
   "dependencies": {
     "tslib": "^2.3.0"

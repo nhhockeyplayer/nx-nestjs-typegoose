@@ -1,7 +1,7 @@
 import { SchemaOptions } from 'mongoose'
 
 export interface TypegooseClass {
-  new (...args: any[])
+  new (...args: any[]): any
 }
 
 export interface TypegooseClassWrapper {
