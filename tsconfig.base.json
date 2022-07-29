@@ -2,27 +2,29 @@
   "compileOnSave": false,
   "compilerOptions": {
     "rootDir": ".",
-    "sourceMap": true,
-    "target": "es6",
-    "lib": ["esnext"],
-    "removeComments": false,
+
     "module": "commonjs",
+    "esModuleInterop": true,
     "moduleResolution": "node",
-    "newLine": "LF",
     "declaration": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "allowJs": false,
-    "outDir": "build",
-    "inlineSourceMap": true,
-    "importHelpers": true,
+    "noImplicitAny": false,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
-    "strictNullChecks": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2020",
+    "sourceMap": false,
+    "outDir": "build",
+    "baseUrl": "./",
+    "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo",
+    "lib": [
+      "es2020"
+    ],
     "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "baseUrl": ".",
+    "forceConsistentCasingInFileNames": true,
+
     "paths": {
       "@nestjs-typegoose/nestjs-typegoose": [
         "packages/nestjs-typegoose/src/index.ts"
